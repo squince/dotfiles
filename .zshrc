@@ -8,7 +8,7 @@ export ZSH="/Users/stevequince/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="crunch"
+# ZSH_THEME="avit"
 ZSH_THEME="quince"
 
 # Set list of themes to pick from when loading at random
@@ -71,6 +71,7 @@ HYPHEN_INSENSITIVE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git-extras
+  git-pairing
   gitfast
   osx
   node
