@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/stevequince/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -79,6 +79,7 @@ plugins=(
   pip
   sudo
   vi-mode
+  git-mob
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -88,25 +89,15 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 ## NVM
-export NVM_DIR="/Users/stevequince/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll="ls -lah"
-alias myip="curl http://ipecho.net/plain; echo"
-alias zedit="vi ~/.zshrc"
-alias upzed="source ~/.zshrc"
-alias usage="du -h -d1 | sort -rh"
-alias port="lsof -i "
+# These are located in $ZSH/custom/aliases.zsh
 
 # CUSTOM FUNCTIONS
 # open a git pull request
