@@ -1,5 +1,6 @@
 " make jj typed quickly equate to <esc> to switch out of insert mode
 imap jj <esc>
+imap JJ <esc>
 
 " make it easier to swap between panes
 nnoremap <C-J> <C-W><C-J>
@@ -18,34 +19,68 @@ set t_ts=]1;
 set t_fs=
 set titleold=
 
-" conealing but not when in insert mode
+syntax on
+
+" concealing but not when in insert mode
 let g:indentLine_noConcealCursor=""
 "let g:vim_json_syntax_conceal = 0
+
+" ALE stuff
+let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+let g:ale_fixers = {
+\    '*': ['remove_trailing_lines', 'trim_whitespace'],
+\    'javascript': ['prettier', 'eslint'],
+\    'javascript.jsx': ['prettier', 'eslint'],
+\    'python': ['yapf']
+\}
+let g:ale_linters = {
+\    'javascript': ['prettier', 'eslint'],
+\    'javascript.jsx': ['prettier', 'eslint'],
+\    'python': ['pep8']
+\}
+
+"map lint error navigation to alt-j and alt-k
+nnoremap <silent> <space>j  :ALENext<cr>
+nnoremap <silent> <space>k  :ALEPrevious<cr>
+nmap <silent> <space>f :ALEFix<cr>
 
 set wildignore+=*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov
 
 " Set the type for the file type and override if file type already has detected
 au BufRead,BufNewFile *.mustache set filetype=sql
 au BufRead,BufNewFile *.tag set filetype=html
-au BufRead,BufNewFile *.zsh-theme set filetype=zsh
+au BufRead,BufNewFile *.overrides set filetype=sh
 
 " use the mac clipboard
 set clipboard=unnamed
 
+"damned those trailing spaces
+autocmd FileType sql,ruby,handlebars,html,litcoffee,coffee,css,less,md,py,python,javascript,js autocmd bufwritepre <buffer> :%s/\s\+$//e
+
 " no forced wrapping, grandpa width buffers are not needed
-set wrap
+set nowrap
 set linebreak
 set nolist  " list disables linebreak
-set textwidth=0
-set wrapmargin=0
-set formatoptions=cqt
-au FileType * set fo-=t 
+set textwidth=100
+"set wrapmargin=0
+set formatoptions=coq
+set nowrap sidescroll=5
+set sidescrolloff=1
+set display=lastline
+au FileType * set fo-=t fo-=r
+au FileType *.* set fo-=t fo-=r
 
-"damned those trailing spaces
-autocmd filetype sql,ruby,handlebars,html,litcoffee,coffee,css,less,md,yaml,py,python,javascript,js autocmd bufwritepre <buffer> :%s/\s\+$//e
+"code folding
+set foldmethod=indent "syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 "show the tabs
-set listchars=tab:\ ▸
+set list
+set listchars=tab:▸▸
+"set listchars=tab:>-
 
 " scrolling
 set mouse=a
@@ -56,3 +91,11 @@ map <ScrollWheelDown> <C-E>
 " mapleader > the value of <leader>
 " e.g., ":,T" will open the command-T plugin for fuzzy file searching
 let mapleader=","
+
+"map lint error navigation to alt-j and alt-k
+"nmap <silent> <leader>j :ALENext<cr>
+"nmap <silent> <leader>k :ALEPrevious<cr>
+
+" windowswap
+" let g:windowswap_map_keys = 0 "prevent default bindings
+" nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
