@@ -1,0 +1,2 @@
+" use jsx plugin directly and override polyglot's embedded version
+let g:polyglot_disabled = ['jsx']

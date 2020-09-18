@@ -19,6 +19,7 @@ set t_ts=]1;
 set t_fs=
 set titleold=
 
+set term=xterm-256color
 syntax on
 
 " concealing but not when in insert mode
@@ -97,5 +98,5 @@ let mapleader=","
 "nmap <silent> <leader>k :ALEPrevious<cr>
 
 " windowswap
-" let g:windowswap_map_keys = 0 "prevent default bindings
-" nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
+let g:windowswap_map_keys = 0 "prevent default bindings
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
