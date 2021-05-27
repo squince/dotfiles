@@ -1,0 +1,20 @@
+[user]
+  name = Steve Quince
+  email = squince@glgroup.com
+[color]
+  ui = true
+[help]
+  autocorrect = 5
+[alias]
+  wdiff = diff --color-words
+  base = rebase --committer-date-is-author-date SHA
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[push]
+  default = matching
+[submodule]
+  recurse = true
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+[diff]
+  submodule = log
