@@ -18,3 +18,5 @@
   insteadOf = https://github.com/
 [diff]
   submodule = log
+[status]
+	submodulesummary = 1
